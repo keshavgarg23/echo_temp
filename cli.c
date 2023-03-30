@@ -17,7 +17,9 @@ int main(){
 
     c.sin_family = AF_INET;
     c.sin_port = htons(22000);
-    c.sin_addr.s_addr = inet_addr("103.240.233.206");
+    // c.sin_addr.s_addr = inet_addr("54.212.42.192");
+    c.sin_addr.s_addr = inet_addr("192.168.1.34");
+
 
     err(connect(sock,(struct sockaddr*)&c,sizeof(c)),"connection");
     printf("Connected!\n");

@@ -11,6 +11,7 @@
 int main(){
     struct sockaddr_in b;
     struct sockaddr_in c;
+    char *ip;
     int len = sizeof(c);
     char msg[100];
     int sock = socket(AF_INET,SOCK_STREAM,0);
@@ -29,7 +30,11 @@ int main(){
     int conn = accept(sock,(struct sockaddr*)&c,&len);
     err(conn,"conn");
 
-    printf("Connected!\n");
+    // memset(ip,0,sizeof(ip));
+    ip = inet_ntoa(c.sin_addr);
+
+
+    printf("Connected %s!\n",ip);
     while(1){
         memset(&msg,0,sizeof(msg));
         recv(conn,&msg,sizeof(msg),0);
